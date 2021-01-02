@@ -10,6 +10,7 @@ React Hooks library to store navigation state and restore it.
 
 <!-- toc -->
 
+- [Setup](#setup)
 
 <!-- tocstop -->
 
