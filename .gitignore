@@ -1,0 +1,11 @@
+node_modules/
+cjs/
+es/
+umd/
+coverage/
+
+examples/*-umd.js
+*.map
+.eslintcache
+package-lock.json
+.token

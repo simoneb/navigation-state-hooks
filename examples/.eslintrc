@@ -1,0 +1,17 @@
+{
+  "env": {
+    "browser": true
+  },
+  "parserOptions": { "sourceType": "script" },
+  "globals": {
+    "React": true,
+    "PropTypes": true,
+    "ReactRouterDOM": true,
+    "ReachRouter": true,
+    "useReactRouterNavigationState": true,
+    "useReachRouterNavigationState": true,
+    "Source": true,
+    "ReactRouterExample": true,
+    "ReachRouterExample": true
+  }
+}

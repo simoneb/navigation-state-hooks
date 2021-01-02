@@ -1,0 +1,5 @@
+cjs/
+es/
+umd/
+coverage/
+examples/*-umd.js
