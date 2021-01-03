@@ -1,0 +1,6 @@
+{
+  "main": "../cjs/reach-router.js",
+  "module": "../es/reach-router.js",
+  "unpkg": "../umd/reach-router.js",
+  "browser": "../umd/reach-router.js"
+}

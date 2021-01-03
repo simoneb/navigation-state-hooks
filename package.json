@@ -4,9 +4,6 @@
   "description": "React Hooks for storing navigation state",
   "author": "Simone Busoli <simone.busoli@nearform.com>",
   "repository": "simoneb/navigation-state-hooks",
-  "main": "cjs/index.js",
-  "module": "es/index.js",
-  "unpkg": "umd/index.js",
   "files": [
     "cjs/",
     "es/",

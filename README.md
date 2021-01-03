@@ -6,11 +6,12 @@
 [![bundlephobia](https://badgen.net/bundlephobia/minzip/navigation-state-hooks)](https://bundlephobia.com/result?p=navigation-state-hooks)
 [![bundlephobia](https://badgen.net/bundlephobia/dependency-count/navigation-state-hooks)](https://bundlephobia.com/result?p=navigation-state-hooks)
 
-React Hooks library to store navigation state and restore it.
+React Hooks for storing navigation state.
 
 <!-- toc -->
 
-- [Setup](#setup)
+- [navigation-state-hooks](#navigation-state-hooks)
+  - [Setup](#setup)
 
 <!-- tocstop -->
 
