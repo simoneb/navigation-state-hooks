@@ -1,6 +1,6 @@
-export default function LocationKeyedCache(locationId, cache) {
+export default function PrefixCache(prefix, cache) {
   function makeKey(key) {
-    return [locationId, key].filter(Boolean).join('-')
+    return [prefix, key].filter(Boolean).join('-')
   }
 
   return {

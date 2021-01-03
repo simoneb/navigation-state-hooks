@@ -8,7 +8,7 @@ const ReactRouterExample = (function () {
   return function ReactRouterExample() {
     return (
       <BrowserRouter>
-        <NavigationStateProvider>
+        <NavigationStateProvider debug>
           <App />
         </NavigationStateProvider>
       </BrowserRouter>

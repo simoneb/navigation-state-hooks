@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react'
 
 import GenerationalCache from '../lib/GenerationalCache'
-import LocationKeyedCache from '../lib/LocationKeyedCache'
+import PrefixCache from '../lib/PrefixCache'
 import makeLocationId from '../lib/makeLocationId'
 import usePrevious from '../lib/usePrevious'
 
@@ -31,8 +31,5 @@ export default function useNavigationStateCache(
     })
   }, [cache, history, prevLocationRef, historyListenLocationAccessor])
 
-  return useMemo(() => new LocationKeyedCache(locationId, cache), [
-    locationId,
-    cache,
-  ])
+  return useMemo(() => new PrefixCache(locationId, cache), [locationId, cache])
 }
