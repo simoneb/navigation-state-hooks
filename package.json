@@ -8,7 +8,9 @@
     "cjs/",
     "es/",
     "umd/",
-    "src/"
+    "src/",
+    "react-router/",
+    "reach-router/"
   ],
   "scripts": {
     "clean": "rimraf cjs es umd",
