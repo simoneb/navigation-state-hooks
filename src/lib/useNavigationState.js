@@ -17,9 +17,9 @@ export default function useNavigationState(initializer, _options) {
     )
   }
 
-  const [state, setState] = useState(
-    context.cache.get(options.prefix) || initializer
-  )
+  const result = useState(context.cache.get(options.prefix) ?? initializer)
+
+  const [state] = result
 
   useEffect(() => {
     context.cache.set(options.prefix, state)
@@ -31,5 +31,5 @@ export default function useNavigationState(initializer, _options) {
     }
   })
 
-  return useMemo(() => [state, setState], [state, setState])
+  return result
 }

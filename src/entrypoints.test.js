@@ -27,7 +27,7 @@ describe('enrtypoints', () => {
     })
   })
 
-  it('should fail when importing root', async () => {
+  it('should fail when importing root', () => {
     expect(() => import('..')).rejects.toThrow(/cannot find module/i)
   })
 })

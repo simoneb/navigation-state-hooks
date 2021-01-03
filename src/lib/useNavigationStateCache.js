@@ -1,9 +1,8 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 
 import GenerationalCache from '../lib/GenerationalCache'
 import PrefixCache from '../lib/PrefixCache'
 import makeLocationId from '../lib/makeLocationId'
-import usePrevious from '../lib/usePrevious'
 
 export default function useNavigationStateCache(
   maxHistoryLength,
@@ -14,7 +13,7 @@ export default function useNavigationStateCache(
 ) {
   const history = useHistory()
   const location = useLocation()
-  const prevLocationRef = usePrevious(location)
+  const oldLocation = useRef()
   const locationId = useMemo(() => makeLocationId(location), [location])
   const cache = useMemo(
     () => new GenerationalCache(maxHistoryLength, persister),
@@ -26,12 +25,15 @@ export default function useNavigationStateCache(
       const location = historyListenLocationAccessor(change)
 
       if (
-        makeLocationId(location) !== makeLocationId(prevLocationRef.current)
+        !oldLocation.current ||
+        makeLocationId(location) !== makeLocationId(oldLocation.current)
       ) {
         cache.nextGeneration()
       }
+
+      oldLocation.current = location
     })
-  }, [cache, history, prevLocationRef, historyListenLocationAccessor])
+  }, [cache, history, oldLocation, historyListenLocationAccessor])
 
   return useMemo(() => new PrefixCache(locationId, cache), [locationId, cache])
 }
