@@ -1,6 +1,6 @@
 {
   "name": "navigation-state-hooks",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React Hooks for storing navigation state",
   "author": "Simone Busoli <simone.busoli@nearform.com>",
   "repository": "simoneb/navigation-state-hooks",

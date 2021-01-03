@@ -10,8 +10,7 @@ React Hooks for storing navigation state.
 
 <!-- toc -->
 
-- [navigation-state-hooks](#navigation-state-hooks)
-  - [Setup](#setup)
+- [Setup](#setup)
 
 <!-- tocstop -->
 
