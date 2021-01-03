@@ -14,6 +14,7 @@ export default function NavigationStateProvider({
   useLocation,
   maxHistoryLength,
   historyListenLocationAccessor,
+  debug,
 }) {
   const cache = useNavigationStateCache(
     maxHistoryLength,
@@ -22,10 +23,10 @@ export default function NavigationStateProvider({
     historyListenLocationAccessor
   )
 
-  const value = useMemo(() => ({ cache }), [cache])
+  const context = useMemo(() => ({ cache, debug }), [cache, debug])
 
   return (
-    <NavigationStateContext.Provider value={value}>
+    <NavigationStateContext.Provider value={context}>
       {children}
     </NavigationStateContext.Provider>
   )
@@ -37,9 +38,11 @@ NavigationStateProvider.propTypes = {
   useLocation: T.func.isRequired,
   historyListenLocationAccessor: T.func,
   maxHistoryLength: T.number,
+  debug: T.bool,
 }
 
 NavigationStateProvider.defaultProps = {
   historyListenLocationAccessor: identity,
   maxHistoryLength: 2,
+  debug: false,
 }

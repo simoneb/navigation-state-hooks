@@ -1,8 +1,12 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useMemo, useState } from 'react'
 
 import { NavigationStateContext } from './NavigationStateProvider'
 
-export default function useNavigationState(initializer) {
+const DEFAULTS = { prefix: null, debug: false }
+
+export default function useNavigationState(initializer, _options) {
+  const options = useMemo(() => ({ ...DEFAULTS, ..._options }), [_options])
+
   const context = useContext(NavigationStateContext)
 
   if (!context) {
@@ -11,16 +15,18 @@ export default function useNavigationState(initializer) {
     )
   }
 
-  const result = useState(context.cache.get() || initializer)
+  const result = useState(context.cache.get(options.prefix) || initializer)
 
   const [state] = result
 
   useEffect(() => {
-    context.cache.set(state)
-  }, [context.cache, state])
+    context.cache.set(options.prefix, state)
+  }, [context.cache, options.prefix, state])
 
   useEffect(() => {
-    console.log(JSON.stringify(context.cache._cache()))
+    if (context.debug || options.debug) {
+      console.debug(JSON.stringify(context.cache._cache()))
+    }
   })
 
   return result

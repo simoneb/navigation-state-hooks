@@ -5,6 +5,16 @@ const ReactRouterExample = (function () {
   const useNavigationState = useReactRouterNavigationState
   const { NavigationStateProvider } = useNavigationState
 
+  return function ReactRouterExample() {
+    return (
+      <BrowserRouter>
+        <NavigationStateProvider>
+          <App />
+        </NavigationStateProvider>
+      </BrowserRouter>
+    )
+  }
+
   function App() {
     return (
       <div>
@@ -57,18 +67,17 @@ const ReactRouterExample = (function () {
   }
 
   function Help() {
-    return 'Help'
-  }
+    const [state1, setState1] = useNavigationState(100, { prefix: 'prefix1' })
+    const [state2, setState2] = useNavigationState(200, { prefix: 'prefix2' })
 
-  function ReactRouterExample() {
     return (
-      <BrowserRouter>
-        <NavigationStateProvider>
-          <App />
-        </NavigationStateProvider>
-      </BrowserRouter>
+      <div>
+        <h2>Help</h2>
+        <p>State1: {state1}</p>
+        <p>State2: {state2}</p>
+        <button onClick={() => setState1(s => s + 1)}>increase 1</button>
+        <button onClick={() => setState2(s => s + 1)}>increase 2</button>
+      </div>
     )
   }
-
-  return ReactRouterExample
 })()

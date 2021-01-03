@@ -1,10 +1,14 @@
 export default function LocationKeyedCache(locationId, cache) {
+  function makeKey(key) {
+    return [locationId, key].filter(Boolean).join('-')
+  }
+
   return {
-    get() {
-      return cache.get(locationId)
+    get(key) {
+      return cache.get(makeKey(key))
     },
-    set(value) {
-      cache.set(locationId, value)
+    set(key, value) {
+      cache.set(makeKey(key), value)
     },
     nextGeneration() {
       cache.nextGeneration()

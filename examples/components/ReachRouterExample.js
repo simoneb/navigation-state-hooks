@@ -5,7 +5,7 @@ const ReachRouterExample = (function () {
   const useNavigationState = useReachRouterNavigationState
   const { NavigationStateProvider } = useNavigationState
 
-  function ReachRouterExample() {
+  return function ReachRouterExample() {
     return (
       <Router>
         <Root default></Root>
@@ -15,13 +15,11 @@ const ReachRouterExample = (function () {
 
   function Root() {
     return (
-      <NavigationStateProvider>
+      <NavigationStateProvider debug>
         <App />
       </NavigationStateProvider>
     )
   }
-
-  ReachRouterExample.propTypes = {}
 
   function App() {
     return (
@@ -75,8 +73,17 @@ const ReachRouterExample = (function () {
   }
 
   function Help() {
-    return 'Help'
-  }
+    const [state1, setState1] = useNavigationState(100, { prefix: 'prefix1' })
+    const [state2, setState2] = useNavigationState(200, { prefix: 'prefix2' })
 
-  return ReachRouterExample
+    return (
+      <div>
+        <h2>Help</h2>
+        <p>State1: {state1}</p>
+        <p>State2: {state2}</p>
+        <button onClick={() => setState1(s => s + 1)}>increase 1</button>
+        <button onClick={() => setState2(s => s + 1)}>increase 2</button>
+      </div>
+    )
+  }
 })()

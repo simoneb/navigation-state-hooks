@@ -8,9 +8,14 @@ function Example() {
 
   const Component = choices[choice]
 
+  function handleChange(e) {
+    window.history.pushState(null, null, '/')
+    setChoice(e.target.value)
+  }
+
   return (
     <div>
-      <select value={choice} onChange={e => setChoice(e.target.value)}>
+      <select value={choice} onChange={handleChange}>
         {Object.keys(choices).map(c => (
           <option key={c}>{c}</option>
         ))}
