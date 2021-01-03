@@ -1,11 +1,10 @@
 node_modules/
+coverage/
 cjs/
 es/
 umd/
-coverage/
-
 examples/assets/
-*.map
-.eslintcache
+
 package-lock.json
+.eslintcache
 .token

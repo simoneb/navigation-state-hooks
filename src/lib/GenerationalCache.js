@@ -1,7 +1,7 @@
-const INITIAL = [{}]
+const INITIAL = () => [{}]
 
 export default function GenerationalCache(maxGenerations, persister) {
-  let cache = persister.hydrate() || INITIAL
+  let cache = persister.hydrate() || INITIAL()
 
   return {
     get(key) {
@@ -28,7 +28,7 @@ export default function GenerationalCache(maxGenerations, persister) {
       persister.persist(cache)
     },
     clear() {
-      cache = INITIAL
+      cache = INITIAL()
       persister.persist(cache)
     },
     _cache() {
