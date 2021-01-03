@@ -1,6 +1,8 @@
 import { useContext, useEffect, useMemo, useState } from 'react'
 
-import { NavigationStateContext } from './NavigationStateProvider'
+import NavigationStateProvider, {
+  NavigationStateContext,
+} from './NavigationStateProvider'
 
 const DEFAULTS = { prefix: null, debug: false }
 
@@ -11,13 +13,13 @@ export default function useNavigationState(initializer, _options) {
 
   if (!context) {
     throw new Error(
-      'NavigationStateContext not found in component hierarchy. Make Sure to wrap your component tree with <NavigationStateProvider>'
+      `${NavigationStateContext.displayName} not found in component hierarchy. Make Sure to wrap your component tree with <${NavigationStateProvider.displayName}>`
     )
   }
 
-  const result = useState(context.cache.get(options.prefix) || initializer)
-
-  const [state] = result
+  const [state, setState] = useState(
+    context.cache.get(options.prefix) || initializer
+  )
 
   useEffect(() => {
     context.cache.set(options.prefix, state)
@@ -29,5 +31,5 @@ export default function useNavigationState(initializer, _options) {
     }
   })
 
-  return result
+  return useMemo(() => [state, setState], [state, setState])
 }

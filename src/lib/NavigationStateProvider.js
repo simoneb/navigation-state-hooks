@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import T from 'prop-types'
 
 import useNavigationStateCache from './useNavigationStateCache'
+import { NULL_PERSISTER } from './persisters'
 
 export const NavigationStateContext = React.createContext()
 NavigationStateContext.displayName = 'NavigationStateContext'
@@ -10,14 +11,16 @@ const identity = _ => _
 
 export default function NavigationStateProvider({
   children,
+  maxHistoryLength,
+  debug,
+  persister,
   useHistory,
   useLocation,
-  maxHistoryLength,
   historyListenLocationAccessor,
-  debug,
 }) {
   const cache = useNavigationStateCache(
     maxHistoryLength,
+    persister,
     useHistory,
     useLocation,
     historyListenLocationAccessor
@@ -34,15 +37,19 @@ export default function NavigationStateProvider({
 
 NavigationStateProvider.propTypes = {
   children: T.node.isRequired,
+  maxHistoryLength: T.number,
+  persister: T.object,
+  debug: T.bool,
   useHistory: T.func.isRequired,
   useLocation: T.func.isRequired,
   historyListenLocationAccessor: T.func,
-  maxHistoryLength: T.number,
-  debug: T.bool,
 }
 
 NavigationStateProvider.defaultProps = {
-  historyListenLocationAccessor: identity,
-  maxHistoryLength: 2,
+  maxHistoryLength: null,
+  persister: NULL_PERSISTER,
   debug: false,
+  historyListenLocationAccessor: identity,
 }
+
+NavigationStateProvider.displayName = 'NavigationStateProvider'

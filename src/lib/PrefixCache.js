@@ -8,10 +8,13 @@ export default function PrefixCache(prefix, cache) {
       return cache.get(makeKey(key))
     },
     set(key, value) {
-      cache.set(makeKey(key), value)
+      return cache.set(makeKey(key), value)
     },
     nextGeneration() {
-      cache.nextGeneration()
+      return cache.nextGeneration()
+    },
+    clear() {
+      return cache.clear()
     },
     _cache() {
       return cache._cache()

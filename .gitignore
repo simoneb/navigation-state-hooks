@@ -4,7 +4,7 @@ es/
 umd/
 coverage/
 
-examples/*-umd.js
+examples/assets/
 *.map
 .eslintcache
 package-lock.json

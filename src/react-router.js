@@ -3,6 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom'
 
 import NavigationStateProvider from './lib/NavigationStateProvider'
 import useNavigationState from './lib/useNavigationState'
+import * as persisters from './lib/persisters'
 
 function ReactRouterNavigationStateProvider(props) {
   return (
@@ -16,4 +17,5 @@ function ReactRouterNavigationStateProvider(props) {
 
 export default Object.assign(useNavigationState, {
   NavigationStateProvider: ReactRouterNavigationStateProvider,
+  ...persisters,
 })

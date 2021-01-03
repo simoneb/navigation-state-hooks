@@ -23,58 +23,32 @@ export default [
   },
   {
     input: 'src/react-router.js',
-    output: [
-      {
-        file: 'umd/react-router.js',
-        format: 'umd',
-        name: 'useReactRouterNavigationState',
-        globals: {
-          react: 'React',
-          'prop-types': 'PropTypes',
-          'react-router-dom': 'ReactRouterDOM',
-        },
-        sourcemap: true,
+    output: ['examples/assets', 'umd'].map(path => ({
+      file: `${path}/react-router-umd.js`,
+      format: 'umd',
+      name: 'useReactRouterNavigationState',
+      globals: {
+        react: 'React',
+        'prop-types': 'PropTypes',
+        'react-router-dom': 'ReactRouterDOM',
       },
-      {
-        file: 'examples/react-router-umd.js',
-        format: 'umd',
-        name: 'useReactRouterNavigationState',
-        globals: {
-          react: 'React',
-          'prop-types': 'PropTypes',
-          'react-router-dom': 'ReactRouterDOM',
-        },
-        sourcemap: true,
-      },
-    ],
+      sourcemap: true,
+    })),
     plugins,
   },
   {
     input: 'src/reach-router.js',
-    output: [
-      {
-        file: 'umd/reach-router.js',
-        format: 'umd',
-        name: 'useReachRouterNavigationState',
-        globals: {
-          react: 'React',
-          'prop-types': 'PropTypes',
-          '@reach/router': 'ReachRouter',
-        },
-        sourcemap: true,
+    output: ['examples/assets', 'umd'].map(path => ({
+      file: `${path}/reach-router-umd.js`,
+      format: 'umd',
+      name: 'useReachRouterNavigationState',
+      globals: {
+        react: 'React',
+        'prop-types': 'PropTypes',
+        '@reach/router': 'ReachRouter',
       },
-      {
-        file: 'examples/reach-router-umd.js',
-        format: 'umd',
-        name: 'useReachRouterNavigationState',
-        globals: {
-          react: 'React',
-          'prop-types': 'PropTypes',
-          '@reach/router': 'ReachRouter',
-        },
-        sourcemap: true,
-      },
-    ],
+      sourcemap: true,
+    })),
     plugins,
   },
 ]

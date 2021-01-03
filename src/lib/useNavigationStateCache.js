@@ -7,6 +7,7 @@ import usePrevious from '../lib/usePrevious'
 
 export default function useNavigationStateCache(
   maxHistoryLength,
+  persister,
   useHistory,
   useLocation,
   historyListenLocationAccessor
@@ -15,9 +16,10 @@ export default function useNavigationStateCache(
   const location = useLocation()
   const prevLocationRef = usePrevious(location)
   const locationId = useMemo(() => makeLocationId(location), [location])
-  const cache = useMemo(() => new GenerationalCache(maxHistoryLength + 1), [
-    maxHistoryLength,
-  ])
+  const cache = useMemo(
+    () => new GenerationalCache(maxHistoryLength, persister),
+    [maxHistoryLength, persister]
+  )
 
   useEffect(() => {
     return history.listen(change => {
