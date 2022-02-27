@@ -1,3 +1,5 @@
+> The license of this software has changed to AWISC - Anti War ISC License
+
 # navigation-state-hooks
 
 ![ci](https://github.com/simoneb/navigation-state-hooks/workflows/ci/badge.svg)
